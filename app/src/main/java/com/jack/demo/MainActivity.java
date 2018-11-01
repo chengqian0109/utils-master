@@ -3,10 +3,14 @@ package com.jack.demo;
 import android.Manifest;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Toast;
 
 import com.jack.utils.DeviceUtils;
+import com.jack.utils.JackHandler;
 import com.jack.utils.LogUtils;
 import com.jack.utils.PermissionUtils;
 
@@ -14,12 +18,48 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
+    public static final int TOAST_1 = 1;
+    public static final int TOAST_2 = 2;
+
+    static class Handler extends JackHandler<MainActivity> {
+
+        private Handler(MainActivity context) {
+            super(context);
+        }
+
+        @Override
+        protected void doSomething(MainActivity context, Message msg) {
+            switch (msg.what) {
+                case TOAST_1:
+                    Toast.makeText(context.getApplicationContext(), "第一个吐司", Toast.LENGTH_SHORT).show();
+                    sendEmptyMessageDelayed(TOAST_2, 3000);
+                    break;
+                case TOAST_2:
+                    Toast.makeText(context.getApplicationContext(), "第二个吐司", Toast.LENGTH_SHORT).show();
+                    break;
+                default:
+            }
+        }
+    }
+
+    private Handler mHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mHandler = new Handler(this);
+        mHandler.sendEmptyMessageDelayed(TOAST_1, 3000);
+        findViewById(R.id.btn).setOnClickListener(new ViewClickListener() {
+            @Override
+            public void onViewClick(View v) {
+                LogUtils.e("ViewClickListener # onViewClick");
+            }
+        });
+    }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public void requestPermissions(View view) {
         List<String> permissions = PermissionUtils.getPermissions(PermissionUtils.Permission.CALENDAR,
                 PermissionUtils.Permission.PHONE, PermissionUtils.Permission.SMS, PermissionUtils.Permission.STORAGE,
                 PermissionUtils.Permission.CONTACTS);
