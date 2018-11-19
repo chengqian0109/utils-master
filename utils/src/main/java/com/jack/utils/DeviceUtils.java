@@ -32,7 +32,7 @@ public class DeviceUtils {
                 if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.O) {
                     imei = telephonyManager.getDeviceId();
                 } else {
-                    imei = telephonyManager.getImei();
+                    imei = telephonyManager != null ? telephonyManager.getImei() : null;
                 }
             }
         } catch (Exception e) {

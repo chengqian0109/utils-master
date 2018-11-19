@@ -304,9 +304,7 @@ public class PermissionUtils {
     public static List<String> addPermissions(@Nullable List<String> permissionList, String... permissions) {
         permissionList = permissionList == null ? new ArrayList<>() : permissionList;
         if (permissions != null && permissions.length != 0) {
-            for (String permission : permissions) {
-                permissionList.add(permission);
-            }
+            permissionList.addAll(Arrays.asList(permissions));
         }
         return permissionList;
     }
