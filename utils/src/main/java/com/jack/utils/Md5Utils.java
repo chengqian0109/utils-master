@@ -8,7 +8,7 @@ import java.security.MessageDigest;
  * @author chengqian
  * Created on 2018/6/28
  */
-public class Md5Utils {
+public class MD5Utils {
     /**
      * MD5加密，32位
      * @param str 要加密的字符串

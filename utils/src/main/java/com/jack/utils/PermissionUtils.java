@@ -100,7 +100,7 @@ public class PermissionUtils {
      * @param activity       必须是FragmentActivity
      * @param permissionList 请求的权限集合
      */
-    public static Disposable requestPermissions(FragmentActivity activity, PermissionCallback callback, List<String> permissionList) {
+    public static Disposable requestPermissions(FragmentActivity activity, Callback callback, List<String> permissionList) {
         if (activity != null && callback != null && permissionList != null && permissionList.size() != 0) {
             // 再次进行权限申请操作时清零
             sAllowedPermissionCount = 0;
@@ -148,7 +148,7 @@ public class PermissionUtils {
      * @param activity    必须是FragmentActivity
      * @param permissions 请求的权限(个数可变)
      */
-    public static Disposable requestPermissions(FragmentActivity activity, PermissionCallback callback, String... permissions) {
+    public static Disposable requestPermissions(FragmentActivity activity, Callback callback, String... permissions) {
         if (activity != null && callback != null && permissions != null && permissions.length != 0) {
             // 再次进行权限申请操作时清零
             sAllowedPermissionCount = 0;
@@ -192,7 +192,7 @@ public class PermissionUtils {
      * @param fragment    必须是v4包下的Fragment
      * @param permissions 请求的权限(个数可变)
      */
-    public static Disposable requestPermissions(Fragment fragment, PermissionCallback callback, String... permissions) {
+    public static Disposable requestPermissions(Fragment fragment, Callback callback, String... permissions) {
         if (fragment != null && callback != null && permissions != null && permissions.length != 0) {
             // 再次进行权限申请操作时清零
             sAllowedPermissionCount = 0;
@@ -236,7 +236,7 @@ public class PermissionUtils {
      * @param fragment       必须是v4包下的Fragment
      * @param permissionList 请求的权限集合
      */
-    public static Disposable requestPermissions(Fragment fragment, PermissionCallback callback, List<String> permissionList) {
+    public static Disposable requestPermissions(Fragment fragment, Callback callback, List<String> permissionList) {
         if (fragment != null && callback != null && permissionList != null && permissionList.size() > 0) {
             // 再次进行权限申请操作时清零
             sAllowedPermissionCount = 0;
@@ -312,7 +312,7 @@ public class PermissionUtils {
     /**
      * 所有权限申请完毕的回调接口
      */
-    public interface PermissionCallback {
+    public interface Callback {
         /**
          * 所有权限已允许
          */

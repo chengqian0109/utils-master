@@ -25,7 +25,7 @@ public class IDCardUtils {
      *     91 : 国外
      * </pre>
      */
-    private static String[] cityCode = {"11", "12", "13", "14", "15", "21",
+    private static final String[] CITY_CODE = {"11", "12", "13", "14", "15", "21",
             "22", "23", "31", "32", "33", "34", "35", "36", "37", "41", "42",
             "43", "44", "45", "46", "50", "51", "52", "53", "54", "61", "62",
             "63", "64", "65", "71", "81", "82", "91"};
@@ -33,7 +33,7 @@ public class IDCardUtils {
     /**
      * 每位加权因子
      */
-    private static int[] power = {7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5,
+    private static final int[] POWER = {7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5,
             8, 4, 2};
 
     /**
@@ -102,7 +102,7 @@ public class IDCardUtils {
 
         String provinceid = idcard.substring(0, 2);
         // 校验省份
-        if (!checkProvinceid(provinceid)) {
+        if (!checkProvinceId(provinceid)) {
             return false;
         }
 
@@ -129,7 +129,7 @@ public class IDCardUtils {
 
         char[] c = idcard17.toCharArray();
 
-        int[] bit = converCharToInt(c);
+        int[] bit = convertCharToInt(c);
 
         int sum17 = 0;
 
@@ -141,23 +141,19 @@ public class IDCardUtils {
             return false;
         }
         // 将身份证的第18位与算出来的校码进行匹配，不相等就为假
-        if (!idcard18Code.equalsIgnoreCase(checkCode)) {
-            return false;
-        }
-
-        return true;
+        return idcard18Code.equalsIgnoreCase(checkCode);
     }
 
 
     /**
      * 校验省份
      *
-     * @param provinceid
+     * @param provinceId 省级ID
      * @return 合法返回TRUE，否则返回FALSE
      */
-    private static boolean checkProvinceid(String provinceid) {
-        for (String id : cityCode) {
-            if (id.equals(provinceid)) {
+    private static boolean checkProvinceId(String provinceId) {
+        for (String id : CITY_CODE) {
+            if (id.equals(provinceId)) {
                 return true;
             }
         }
@@ -166,9 +162,6 @@ public class IDCardUtils {
 
     /**
      * 数字验证
-     *
-     * @param str
-     * @return
      */
     private static boolean isDigital(String str) {
         return str.matches("^[0-9]*$");
@@ -176,22 +169,19 @@ public class IDCardUtils {
 
     /**
      * 将身份证的每位和对应位的加权因子相乘之后，再得到和值
-     *
-     * @param bit
-     * @return
      */
     private static int getPowerSum(int[] bit) {
 
         int sum = 0;
 
-        if (power.length != bit.length) {
+        if (POWER.length != bit.length) {
             return sum;
         }
 
         for (int i = 0; i < bit.length; i++) {
-            for (int j = 0; j < power.length; j++) {
+            for (int j = 0; j < POWER.length; j++) {
                 if (i == j) {
-                    sum = sum + bit[i] * power[j];
+                    sum = sum + bit[i] * POWER[j];
                 }
             }
         }
@@ -201,7 +191,7 @@ public class IDCardUtils {
     /**
      * 将和值与11取模得到余数进行校验码判断
      *
-     * @param sum17
+     * @param sum17 前十七位的加权和
      * @return 校验位
      */
     private static String getCheckCodeBySum(int sum17) {
@@ -247,12 +237,8 @@ public class IDCardUtils {
 
     /**
      * 将字符数组转为整型数组
-     *
-     * @param c
-     * @return
-     * @throws NumberFormatException
      */
-    private static int[] converCharToInt(char[] c) throws NumberFormatException {
+    private static int[] convertCharToInt(char[] c) {
         int[] a = new int[c.length];
         int k = 0;
         for (char temp : c) {

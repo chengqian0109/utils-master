@@ -38,7 +38,7 @@ public class LogUtils {
     /**
      * 日志输出时的TAG
      */
-    private static String mTag = "LogUtils";
+    private static final String TAG = "LogUtils";
     /**
      * 是否允许输出log
      */
@@ -49,7 +49,7 @@ public class LogUtils {
      */
     public static void v(String msg) {
         if (sLogLevel <= LEVEL_VERBOSE) {
-            Log.v(mTag, msg);
+            Log.v(TAG, msg);
         }
     }
 
@@ -58,7 +58,7 @@ public class LogUtils {
      */
     public static void d(String msg) {
         if (sLogLevel <= LEVEL_DEBUG) {
-            Log.d(mTag, msg);
+            Log.d(TAG, msg);
         }
     }
 
@@ -67,7 +67,7 @@ public class LogUtils {
      */
     public static void i(String msg) {
         if (sLogLevel <= LEVEL_INFO) {
-            Log.i(mTag, msg);
+            Log.i(TAG, msg);
         }
     }
 
@@ -76,7 +76,7 @@ public class LogUtils {
      */
     public static void w(String msg) {
         if (sLogLevel <= LEVEL_WARN) {
-            Log.w(mTag, msg);
+            Log.w(TAG, msg);
         }
     }
 
@@ -85,7 +85,7 @@ public class LogUtils {
      */
     public static void w(Throwable tr) {
         if (sLogLevel <= LEVEL_WARN) {
-            Log.w(mTag, "", tr);
+            Log.w(TAG, "", tr);
         }
     }
 
@@ -94,7 +94,7 @@ public class LogUtils {
      */
     public static void w(String msg, Throwable tr) {
         if (sLogLevel <= LEVEL_WARN && null != msg) {
-            Log.w(mTag, msg, tr);
+            Log.w(TAG, msg, tr);
         }
     }
 
@@ -103,7 +103,7 @@ public class LogUtils {
      */
     public static void e(String msg) {
         if (sLogLevel <= LEVEL_ERROR) {
-            Log.e(mTag, msg);
+            Log.e(TAG, msg);
         }
     }
 
@@ -112,7 +112,7 @@ public class LogUtils {
      */
     public static void e(Throwable tr) {
         if (sLogLevel <= LEVEL_ERROR) {
-            Log.e(mTag, "", tr);
+            Log.e(TAG, "", tr);
         }
     }
 
@@ -121,7 +121,7 @@ public class LogUtils {
      */
     public static void e(String msg, Throwable tr) {
         if (sLogLevel <= LEVEL_ERROR && !TextUtils.isEmpty(msg)) {
-            Log.e(mTag, msg, tr);
+            Log.e(TAG, msg, tr);
         }
     }
 

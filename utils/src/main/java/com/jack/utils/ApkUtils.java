@@ -1,5 +1,6 @@
 package com.jack.utils;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -88,5 +89,16 @@ public class ApkUtils {
             context.startActivity(install);
         }
         context.finish();
+    }
+
+    /**
+     * 检验指定的安装包是否已安装
+     *
+     * @param packageName apk的包名
+     * @return apk是否安装
+     */
+    @SuppressLint("SdCardPath")
+    public static boolean isApkInstalled(String packageName) {
+        return new File("/data/data/" + packageName).exists();
     }
 }

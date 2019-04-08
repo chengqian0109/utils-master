@@ -1,6 +1,7 @@
 package com.jack.utils;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -24,6 +25,7 @@ public class DeviceUtils {
      * @param context 上下文
      * @return 唯一设备串号IMEI，获取不成功时返回空字符串
      */
+    @SuppressLint("HardwareIds")
     public static String getIMEI(Context context) {
         String imei = "";
         try {
@@ -47,6 +49,7 @@ public class DeviceUtils {
      * @param context 上下文
      * @return 手机IMSI号，获取不成功时返回空字符串
      */
+    @SuppressLint("HardwareIds")
     public static String getIMSI(Context context) {
         String imsi = "";
         try {
@@ -63,17 +66,28 @@ public class DeviceUtils {
 
     /**
      * 获取电话号码
+     * 注：并非一定可以获取到电话号码
      *
      * @param context 上下文
      * @return 电话号码
      */
+    @SuppressLint("HardwareIds")
     public static String getPhoneNumber(Context context) {
         String phoneNumber = "";
         try {
             TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
-                phoneNumber = telephonyManager.getLine1Number();
-                return phoneNumber;
+            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED
+                    && ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_SMS) == PackageManager.PERMISSION_GRANTED) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_NUMBERS) == PackageManager.PERMISSION_GRANTED) {
+                        phoneNumber = telephonyManager.getLine1Number();
+                        return phoneNumber;
+                    }
+                    return "";
+                } else {
+                    phoneNumber = telephonyManager.getLine1Number();
+                    return phoneNumber;
+                }
             }
         } catch (Exception e) {
             Log.e(TAG, "getPhoneNumber: " + e.getMessage());
@@ -168,6 +182,7 @@ public class DeviceUtils {
      * @param context 上下文
      * @return SIM卡序列号
      */
+    @SuppressLint("HardwareIds")
     public String getSimSerialNumber(Context context) {
         String simSerialNumber = "";
         try {

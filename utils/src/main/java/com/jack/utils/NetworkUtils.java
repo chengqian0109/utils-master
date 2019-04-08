@@ -3,7 +3,6 @@ package com.jack.utils;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,6 +12,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.Charset;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -72,13 +72,13 @@ public class NetworkUtils {
             if (responseCode == HttpURLConnection.HTTP_OK) {
                 inStream = httpConnection.getInputStream();
                 BufferedReader reader = new BufferedReader(
-                        new InputStreamReader(inStream, "utf-8"));
-                StringBuilder strber = new StringBuilder();
+                        new InputStreamReader(inStream, Charset.forName("UTF-8")));
+                StringBuilder sb = new StringBuilder();
                 String line = null;
                 while ((line = reader.readLine()) != null) {
-                    strber.append(line + "\n");
+                    sb.append(line).append("\n");
                 }
-                Matcher matcher = IP_PATTERN.matcher(strber.toString());
+                Matcher matcher = IP_PATTERN.matcher(sb.toString());
                 if (matcher.find()) {
                     ipLine = matcher.group();
                 }
@@ -97,7 +97,6 @@ public class NetworkUtils {
                 ex.printStackTrace();
             }
         }
-        Log.i("ip", "ip地址：" + ipLine);
         return ipLine;
     }
 
@@ -131,8 +130,7 @@ public class NetworkUtils {
                 {-569376768, -564133889}};
         Random random = new Random();
         int index = random.nextInt(10);
-        String ip = num2ip(range[index][0] + new Random().nextInt(range[index][1] - range[index][0]));
-        return ip;
+        return num2ip(range[index][0] + new Random().nextInt(range[index][1] - range[index][0]));
     }
 
     /**
