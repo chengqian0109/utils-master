@@ -45,4 +45,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }, PermissionUtils.addPermissions(permissions, Manifest.permission.BLUETOOTH, Manifest.permission.CAMERA));
     }
+
+    public void showFancyToast(View view) {
+        FancyToastUtils.showSuccess("哈哈哈");
+    }
 }

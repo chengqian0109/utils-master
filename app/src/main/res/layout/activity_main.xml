@@ -12,4 +12,10 @@
         android:onClick="requestPermissions"
         android:text="申请权限" />
 
+    <Button
+        android:text="吐一下"
+        android:onClick="showFancyToast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>
