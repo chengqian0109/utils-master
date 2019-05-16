@@ -73,7 +73,7 @@ public class ToastUtils {
      *
      * @param text 文本
      */
-    public static void showShort(final CharSequence text) {
+    public static void show(final CharSequence text) {
         sHandler.post(() -> showToast(text, Toast.LENGTH_SHORT));
     }
 
@@ -82,7 +82,7 @@ public class ToastUtils {
      *
      * @param resId 资源Id
      */
-    public static void showShort(final @StringRes int resId) {
+    public static void show(final @StringRes int resId) {
         sHandler.post(() -> showToast(resId, Toast.LENGTH_SHORT));
     }
 
@@ -92,7 +92,7 @@ public class ToastUtils {
      * @param resId 资源Id
      * @param args  参数
      */
-    public static void showShort(final @StringRes int resId, final Object... args) {
+    public static void show(final @StringRes int resId, final Object... args) {
         sHandler.post(() -> showToast(resId, Toast.LENGTH_SHORT, args));
     }
 
@@ -102,7 +102,7 @@ public class ToastUtils {
      * @param format 格式
      * @param args   参数
      */
-    public static void showShort(final String format, final Object... args) {
+    public static void show(final String format, final Object... args) {
         sHandler.post(() -> showToast(format, Toast.LENGTH_SHORT, args));
     }
 
@@ -142,82 +142,6 @@ public class ToastUtils {
      */
     public static void showLong(final String format, final Object... args) {
         sHandler.post(() -> showToast(format, Toast.LENGTH_LONG, args));
-    }
-
-    /**
-     * 显示短时吐司
-     *
-     * @param text 文本
-     */
-    public static void shortShow(CharSequence text) {
-        showToast(text, Toast.LENGTH_SHORT);
-    }
-
-    /**
-     * 显示短时吐司
-     *
-     * @param resId 资源Id
-     */
-    public static void shortShow(@StringRes int resId) {
-        showToast(resId, Toast.LENGTH_SHORT);
-    }
-
-    /**
-     * 显示短时吐司
-     *
-     * @param resId 资源Id
-     * @param args  参数
-     */
-    public static void shortShow(@StringRes int resId, Object... args) {
-        showToast(resId, Toast.LENGTH_SHORT, args);
-    }
-
-    /**
-     * 显示短时吐司
-     *
-     * @param format 格式
-     * @param args   参数
-     */
-    public static void shortShow(String format, Object... args) {
-        showToast(format, Toast.LENGTH_SHORT, args);
-    }
-
-    /**
-     * 显示长时吐司
-     *
-     * @param text 文本
-     */
-    public static void longShow(CharSequence text) {
-        showToast(text, Toast.LENGTH_LONG);
-    }
-
-    /**
-     * 显示长时吐司
-     *
-     * @param resId 资源Id
-     */
-    public static void longShow(@StringRes int resId) {
-        showToast(resId, Toast.LENGTH_LONG);
-    }
-
-    /**
-     * 显示长时吐司
-     *
-     * @param resId 资源Id
-     * @param args  参数
-     */
-    public static void longShow(@StringRes int resId, Object... args) {
-        showToast(resId, Toast.LENGTH_LONG, args);
-    }
-
-    /**
-     * 显示长时吐司
-     *
-     * @param format 格式
-     * @param args   参数
-     */
-    public static void longShow(String format, Object... args) {
-        showToast(format, Toast.LENGTH_LONG, args);
     }
 
     /**
