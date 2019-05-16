@@ -227,7 +227,7 @@ public class ToastUtils {
      * @param duration 显示时长
      */
     private static void showToast(@StringRes int resId, int duration) {
-        showToast(Utils.getApplication().getResources().getText(resId).toString(), duration);
+        showToast(Utils.getString(resId), duration);
     }
 
     /**
@@ -238,7 +238,7 @@ public class ToastUtils {
      * @param args     参数
      */
     private static void showToast(@StringRes int resId, int duration, Object... args) {
-        showToast(String.format(Utils.getApplication().getResources().getString(resId), args), duration);
+        showToast(String.format(Utils.getString(resId), args), duration);
     }
 
     /**
@@ -266,14 +266,14 @@ public class ToastUtils {
         }
         if (sToast == null) {
             if (sLayoutId > 0) {
-                View contentView = View.inflate(Utils.getApplication(), sLayoutId, null);
+                View contentView = View.inflate(Utils.getApp(), sLayoutId, null);
                 TextView tvMsg = contentView.findViewById(R.id.tv_toast_msg);
                 tvMsg.setText(text);
-                sToast = new Toast(Utils.getApplication());
+                sToast = new Toast(Utils.getApp());
                 sToast.setView(contentView);
                 sToast.setDuration(duration);
             } else {
-                sToast = Toast.makeText(Utils.getApplication(), text, duration);
+                sToast = Toast.makeText(Utils.getApp(), text, duration);
             }
             sToast.setGravity(sGravity, sXOffset, sYOffset);
         } else {

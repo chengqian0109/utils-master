@@ -28,7 +28,7 @@ public class SpUtils {
      */
     public static void putString(String key, String value) {
         if (sp == null) {
-            sp = Utils.getApplication().getSharedPreferences(CONFIG, Context.MODE_PRIVATE);
+            sp = Utils.getApp().getSharedPreferences(CONFIG, Context.MODE_PRIVATE);
         }
         sp.edit().putString(key, value).apply();
     }
@@ -41,7 +41,7 @@ public class SpUtils {
      */
     public static void putBoolean(String key, boolean value) {
         if (sp == null) {
-            sp = Utils.getApplication().getSharedPreferences(CONFIG, Context.MODE_PRIVATE);
+            sp = Utils.getApp().getSharedPreferences(CONFIG, Context.MODE_PRIVATE);
         }
         sp.edit().putBoolean(key, value).apply();
     }
@@ -54,7 +54,7 @@ public class SpUtils {
      */
     public static void putInt(String key, int value) {
         if (sp == null) {
-            sp = Utils.getApplication().getSharedPreferences(CONFIG, Context.MODE_PRIVATE);
+            sp = Utils.getApp().getSharedPreferences(CONFIG, Context.MODE_PRIVATE);
         }
         sp.edit().putInt(key, value).apply();
     }
@@ -67,7 +67,7 @@ public class SpUtils {
      */
     public static void putLong(String key, long value) {
         if (sp == null) {
-            sp = Utils.getApplication().getSharedPreferences(CONFIG, Context.MODE_PRIVATE);
+            sp = Utils.getApp().getSharedPreferences(CONFIG, Context.MODE_PRIVATE);
         }
         sp.edit().putLong(key, value).apply();
     }
@@ -80,7 +80,7 @@ public class SpUtils {
      */
     public static void putFloat(String key, float value) {
         if (sp == null) {
-            sp = Utils.getApplication().getSharedPreferences(CONFIG, Context.MODE_PRIVATE);
+            sp = Utils.getApp().getSharedPreferences(CONFIG, Context.MODE_PRIVATE);
         }
         sp.edit().putFloat(key, value).apply();
     }
@@ -108,7 +108,7 @@ public class SpUtils {
      */
     public static String getString(String key, String defValue) {
         if (sp == null) {
-            sp = Utils.getApplication().getSharedPreferences(CONFIG, Context.MODE_PRIVATE);
+            sp = Utils.getApp().getSharedPreferences(CONFIG, Context.MODE_PRIVATE);
         }
         return sp.getString(key, defValue);
     }
@@ -122,7 +122,7 @@ public class SpUtils {
      */
     public static boolean getBoolean(String key, boolean defValue) {
         if (sp == null) {
-            sp = Utils.getApplication().getSharedPreferences(CONFIG, Context.MODE_PRIVATE);
+            sp = Utils.getApp().getSharedPreferences(CONFIG, Context.MODE_PRIVATE);
         }
         return sp.getBoolean(key, defValue);
     }
@@ -136,7 +136,7 @@ public class SpUtils {
      */
     public static int getInt(String key, int defValue) {
         if (sp == null) {
-            sp = Utils.getApplication().getSharedPreferences(CONFIG, Context.MODE_PRIVATE);
+            sp = Utils.getApp().getSharedPreferences(CONFIG, Context.MODE_PRIVATE);
         }
         return sp.getInt(key, defValue);
     }
@@ -150,7 +150,7 @@ public class SpUtils {
      */
     public static long getLong(String key, long defValue) {
         if (sp == null) {
-            sp = Utils.getApplication().getSharedPreferences(CONFIG, Context.MODE_PRIVATE);
+            sp = Utils.getApp().getSharedPreferences(CONFIG, Context.MODE_PRIVATE);
         }
         return sp.getLong(key, defValue);
     }
@@ -164,7 +164,7 @@ public class SpUtils {
      */
     public static float getFloat(String key, float defValue) {
         if (sp == null) {
-            sp = Utils.getApplication().getSharedPreferences(CONFIG, Context.MODE_PRIVATE);
+            sp = Utils.getApp().getSharedPreferences(CONFIG, Context.MODE_PRIVATE);
         }
         return sp.getFloat(key, defValue);
     }
