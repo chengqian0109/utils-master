@@ -1,6 +1,5 @@
 package com.jack.utils;
 
-import android.content.Context;
 import android.util.TypedValue;
 
 /**
@@ -18,57 +17,52 @@ public class DensityUtils {
     /**
      * dp转px
      *
-     * @param context 上下文
      * @param dp dp值
      * @return 转化后的像素值
      */
-    public static int dp2px(Context context, float dp) {
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.getResources()
+    public static int dp2px(float dp) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, Utils.getResources()
                 .getDisplayMetrics());
     }
 
     /**
      * sp转px
      *
-     * @param context 上下文
      * @param sp sp值
      * @return 转化后的像素值
      */
-    public static int sp2px(Context context, float sp) {
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, context.getResources()
+    public static int sp2px(float sp) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, Utils.getResources()
                 .getDisplayMetrics());
     }
 
     /**
      * px转dp
      *
-     * @param context 上下文
      * @param px 像素值
      * @return 转化后的dp值
      */
-    public static float px2dp(Context context, float px) {
-        final float scale = context.getResources().getDisplayMetrics().density;
+    public static float px2dp(float px) {
+        final float scale = Utils.getDisplayMetrics().density;
         return (px / scale);
     }
 
     /**
      * 获取屏幕像素密度
      *
-     * @param context 上下文
      * @return 屏幕像素密度
      */
-    public static float getDensity(Context context) {
-        return context.getResources().getDisplayMetrics().density;
+    public static float getDensity() {
+        return Utils.getDisplayMetrics().density;
     }
 
     /**
      * px转sp
      *
-     * @param context 上下文
      * @param px 像素值
      * @return 转化后的sp值
      */
-    public static float px2sp(Context context, float px) {
-        return (px / context.getResources().getDisplayMetrics().scaledDensity);
+    public static float px2sp(float px) {
+        return (px / Utils.getDisplayMetrics().scaledDensity);
     }
 }

@@ -16,7 +16,7 @@ public class FancyToastUtils {
      * @param message 提示消息
      */
     public static void showSuccess(CharSequence message) {
-        FancyToast.makeText(Utils.getApp(), message, Toast.LENGTH_SHORT, FancyToast.SUCCESS, false).show();
+        FancyToast.makeText(message, Toast.LENGTH_SHORT, FancyToast.SUCCESS, false).show();
     }
 
     /**
@@ -25,7 +25,7 @@ public class FancyToastUtils {
      * @param stringId 字符串资源ID
      */
     public static void showSuccess(@StringRes int stringId) {
-        FancyToast.makeText(Utils.getApp(), Utils.getString(stringId),
+        FancyToast.makeText(Utils.getString(stringId),
                 Toast.LENGTH_SHORT, FancyToast.SUCCESS, false).show();
     }
 
@@ -37,7 +37,7 @@ public class FancyToastUtils {
      */
     public static void showSuccess(@StringRes int stringId, final Object... args) {
         String string = Utils.getString(stringId, args);
-        FancyToast.makeText(Utils.getApp(), string, Toast.LENGTH_SHORT, FancyToast.SUCCESS, false).show();
+        FancyToast.makeText(string, Toast.LENGTH_SHORT, FancyToast.SUCCESS, false).show();
     }
 
     /**
@@ -46,7 +46,7 @@ public class FancyToastUtils {
      * @param message 提示消息
      */
     public static void showSuccessLong(String message) {
-        FancyToast.makeText(Utils.getApp(), message, Toast.LENGTH_LONG, FancyToast.SUCCESS, false).show();
+        FancyToast.makeText(message, Toast.LENGTH_LONG, FancyToast.SUCCESS, false).show();
     }
 
     /**
@@ -55,7 +55,7 @@ public class FancyToastUtils {
      * @param stringId 字符串资源ID
      */
     public static void showSuccessLong(@StringRes int stringId) {
-        FancyToast.makeText(Utils.getApp(), Utils.getString(stringId),
+        FancyToast.makeText(Utils.getString(stringId),
                 Toast.LENGTH_LONG, FancyToast.SUCCESS, false).show();
     }
 
@@ -67,7 +67,7 @@ public class FancyToastUtils {
      */
     public static void showSuccessLong(@StringRes int stringId, final Object... args) {
         String string = Utils.getString(stringId, args);
-        FancyToast.makeText(Utils.getApp(), string, Toast.LENGTH_LONG, FancyToast.SUCCESS, false).show();
+        FancyToast.makeText(string, Toast.LENGTH_LONG, FancyToast.SUCCESS, false).show();
     }
 
     /**
@@ -76,7 +76,7 @@ public class FancyToastUtils {
      * @param message 提示消息
      */
     public static void showWarning(String message) {
-        FancyToast.makeText(Utils.getApp(), message, Toast.LENGTH_SHORT, FancyToast.WARNING, false).show();
+        FancyToast.makeText(message, Toast.LENGTH_SHORT, FancyToast.WARNING, false).show();
     }
 
     /**
@@ -85,7 +85,7 @@ public class FancyToastUtils {
      * @param stringId 字符串资源ID
      */
     public static void showWarning(@StringRes int stringId) {
-        FancyToast.makeText(Utils.getApp(), Utils.getString(stringId),
+        FancyToast.makeText(Utils.getString(stringId),
                 Toast.LENGTH_SHORT, FancyToast.WARNING, false).show();
     }
 
@@ -97,7 +97,7 @@ public class FancyToastUtils {
      */
     public static void showWarning(@StringRes int stringId, final Object... args) {
         String string = Utils.getString(stringId, args);
-        FancyToast.makeText(Utils.getApp(), string, Toast.LENGTH_SHORT, FancyToast.WARNING, false).show();
+        FancyToast.makeText(string, Toast.LENGTH_SHORT, FancyToast.WARNING, false).show();
     }
 
     /**
@@ -106,7 +106,7 @@ public class FancyToastUtils {
      * @param message 提示消息
      */
     public static void showWarningLong(String message) {
-        FancyToast.makeText(Utils.getApp(), message, Toast.LENGTH_LONG, FancyToast.WARNING, false).show();
+        FancyToast.makeText(message, Toast.LENGTH_LONG, FancyToast.WARNING, false).show();
     }
 
     /**
@@ -115,7 +115,7 @@ public class FancyToastUtils {
      * @param stringId 字符串资源ID
      */
     public static void showWarningLong(@StringRes int stringId) {
-        FancyToast.makeText(Utils.getApp(), Utils.getString(stringId),
+        FancyToast.makeText(Utils.getString(stringId),
                 Toast.LENGTH_LONG, FancyToast.WARNING, false).show();
     }
 
@@ -127,7 +127,7 @@ public class FancyToastUtils {
      */
     public static void showWarningLong(final @StringRes int stringId, final Object... args) {
         String string = Utils.getString(stringId, args);
-        FancyToast.makeText(Utils.getApp(), string, Toast.LENGTH_LONG, FancyToast.WARNING, false).show();
+        FancyToast.makeText(string, Toast.LENGTH_LONG, FancyToast.WARNING, false).show();
     }
 
     /**
@@ -136,7 +136,7 @@ public class FancyToastUtils {
      * @param message 提示消息
      */
     public static void showError(String message) {
-        FancyToast.makeText(Utils.getApp(), message, Toast.LENGTH_SHORT, FancyToast.ERROR, false).show();
+        FancyToast.makeText(message, Toast.LENGTH_SHORT, FancyToast.ERROR, false).show();
     }
 
     /**
@@ -145,7 +145,7 @@ public class FancyToastUtils {
      * @param stringId 字符串资源ID
      */
     public static void showError(@StringRes int stringId) {
-        FancyToast.makeText(Utils.getApp(), Utils.getString(stringId),
+        FancyToast.makeText(Utils.getString(stringId),
                 Toast.LENGTH_SHORT, FancyToast.ERROR, false).show();
     }
 
@@ -157,7 +157,7 @@ public class FancyToastUtils {
      */
     public static void showError(@StringRes int stringId, final Object... args) {
         String string = Utils.getString(stringId, args);
-        FancyToast.makeText(Utils.getApp(), string, Toast.LENGTH_SHORT, FancyToast.ERROR, false).show();
+        FancyToast.makeText(string, Toast.LENGTH_SHORT, FancyToast.ERROR, false).show();
     }
 
     /**
@@ -166,7 +166,7 @@ public class FancyToastUtils {
      * @param message 提示消息
      */
     public static void showErrorLong(String message) {
-        FancyToast.makeText(Utils.getApp(), message, Toast.LENGTH_LONG, FancyToast.ERROR, false).show();
+        FancyToast.makeText(message, Toast.LENGTH_LONG, FancyToast.ERROR, false).show();
     }
 
     /**
@@ -175,7 +175,7 @@ public class FancyToastUtils {
      * @param stringId 字符串资源ID
      */
     public static void showErrorLong(@StringRes int stringId) {
-        FancyToast.makeText(Utils.getApp(), Utils.getString(stringId),
+        FancyToast.makeText(Utils.getString(stringId),
                 Toast.LENGTH_LONG, FancyToast.ERROR, false).show();
     }
 
@@ -187,7 +187,7 @@ public class FancyToastUtils {
      */
     public static void showErrorLong(final @StringRes int stringId, final Object... args) {
         String string = Utils.getString(stringId, args);
-        FancyToast.makeText(Utils.getApp(), string, Toast.LENGTH_LONG, FancyToast.ERROR, false).show();
+        FancyToast.makeText(string, Toast.LENGTH_LONG, FancyToast.ERROR, false).show();
     }
 
     /**
@@ -196,7 +196,7 @@ public class FancyToastUtils {
      * @param message 提示消息
      */
     public static void showInfo(String message) {
-        FancyToast.makeText(Utils.getApp(), message, Toast.LENGTH_SHORT, FancyToast.INFO, false).show();
+        FancyToast.makeText(message, Toast.LENGTH_SHORT, FancyToast.INFO, false).show();
     }
 
     /**
@@ -205,7 +205,7 @@ public class FancyToastUtils {
      * @param stringId 字符串资源ID
      */
     public static void showInfo(@StringRes int stringId) {
-        FancyToast.makeText(Utils.getApp(), Utils.getString(stringId),
+        FancyToast.makeText(Utils.getString(stringId),
                 Toast.LENGTH_SHORT, FancyToast.INFO, false).show();
     }
 
@@ -217,7 +217,7 @@ public class FancyToastUtils {
      */
     public static void showInfo(@StringRes int stringId, final Object... args) {
         String string = Utils.getString(stringId, args);
-        FancyToast.makeText(Utils.getApp(), string, Toast.LENGTH_SHORT, FancyToast.INFO, false).show();
+        FancyToast.makeText(string, Toast.LENGTH_SHORT, FancyToast.INFO, false).show();
     }
 
     /**
@@ -226,7 +226,7 @@ public class FancyToastUtils {
      * @param message 提示消息
      */
     public static void showInfoLong(String message) {
-        FancyToast.makeText(Utils.getApp(), message, Toast.LENGTH_LONG, FancyToast.INFO, false).show();
+        FancyToast.makeText(message, Toast.LENGTH_LONG, FancyToast.INFO, false).show();
     }
 
     /**
@@ -235,7 +235,7 @@ public class FancyToastUtils {
      * @param stringId 字符串资源ID
      */
     public static void showInfoLong(@StringRes int stringId) {
-        FancyToast.makeText(Utils.getApp(), Utils.getString(stringId),
+        FancyToast.makeText(Utils.getString(stringId),
                 Toast.LENGTH_LONG, FancyToast.INFO, false).show();
     }
 
@@ -247,7 +247,7 @@ public class FancyToastUtils {
      */
     public static void showInfoLong(final @StringRes int stringId, final Object... args) {
         String string = Utils.getString(stringId, args);
-        FancyToast.makeText(Utils.getApp(), string, Toast.LENGTH_LONG, FancyToast.INFO, false).show();
+        FancyToast.makeText(string, Toast.LENGTH_LONG, FancyToast.INFO, false).show();
     }
 
     /**
@@ -256,7 +256,7 @@ public class FancyToastUtils {
      * @param message 提示消息
      */
     public static void showConfusing(String message) {
-        FancyToast.makeText(Utils.getApp(), message, Toast.LENGTH_SHORT, FancyToast.CONFUSING, false).show();
+        FancyToast.makeText(message, Toast.LENGTH_SHORT, FancyToast.CONFUSING, false).show();
     }
 
     /**
@@ -265,7 +265,7 @@ public class FancyToastUtils {
      * @param stringId 字符串资源ID
      */
     public static void showConfusing(@StringRes int stringId) {
-        FancyToast.makeText(Utils.getApp(), Utils.getString(stringId),
+        FancyToast.makeText(Utils.getString(stringId),
                 Toast.LENGTH_SHORT, FancyToast.CONFUSING, false).show();
     }
 
@@ -277,7 +277,7 @@ public class FancyToastUtils {
      */
     public static void showConfusing(@StringRes int stringId, final Object... args) {
         String string = Utils.getString(stringId, args);
-        FancyToast.makeText(Utils.getApp(), string, Toast.LENGTH_SHORT, FancyToast.CONFUSING, false).show();
+        FancyToast.makeText(string, Toast.LENGTH_SHORT, FancyToast.CONFUSING, false).show();
     }
 
     /**
@@ -286,7 +286,7 @@ public class FancyToastUtils {
      * @param message 提示消息
      */
     public static void showConfusingLong(String message) {
-        FancyToast.makeText(Utils.getApp(), message, Toast.LENGTH_LONG, FancyToast.CONFUSING, false).show();
+        FancyToast.makeText(message, Toast.LENGTH_LONG, FancyToast.CONFUSING, false).show();
     }
 
     /**
@@ -295,7 +295,7 @@ public class FancyToastUtils {
      * @param stringId 字符串资源ID
      */
     public static void showConfusingLong(@StringRes int stringId) {
-        FancyToast.makeText(Utils.getApp(), Utils.getString(stringId),
+        FancyToast.makeText(Utils.getString(stringId),
                 Toast.LENGTH_LONG, FancyToast.CONFUSING, false).show();
     }
 
@@ -307,7 +307,7 @@ public class FancyToastUtils {
      */
     public static void showConfusingLong(final @StringRes int stringId, final Object... args) {
         String string = Utils.getString(stringId, args);
-        FancyToast.makeText(Utils.getApp(), string, Toast.LENGTH_LONG, FancyToast.CONFUSING, false).show();
+        FancyToast.makeText(string, Toast.LENGTH_LONG, FancyToast.CONFUSING, false).show();
     }
 
     /**
@@ -316,7 +316,7 @@ public class FancyToastUtils {
      * @param message 提示消息
      */
     public static void showDefault(String message) {
-        FancyToast.makeText(Utils.getApp(), message, Toast.LENGTH_SHORT, FancyToast.DEFAULT, false).show();
+        FancyToast.makeText(message, Toast.LENGTH_SHORT, FancyToast.DEFAULT, false).show();
     }
 
     /**
@@ -325,7 +325,7 @@ public class FancyToastUtils {
      * @param stringId 字符串资源ID
      */
     public static void showDefault(@StringRes int stringId) {
-        FancyToast.makeText(Utils.getApp(), Utils.getString(stringId),
+        FancyToast.makeText(Utils.getString(stringId),
                 Toast.LENGTH_SHORT, FancyToast.DEFAULT, false).show();
     }
 
@@ -337,7 +337,7 @@ public class FancyToastUtils {
      */
     public static void showDefault(@StringRes int stringId, final Object... args) {
         String string = Utils.getString(stringId, args);
-        FancyToast.makeText(Utils.getApp(), string, Toast.LENGTH_SHORT, FancyToast.DEFAULT, false).show();
+        FancyToast.makeText(string, Toast.LENGTH_SHORT, FancyToast.DEFAULT, false).show();
     }
 
     /**
@@ -346,7 +346,7 @@ public class FancyToastUtils {
      * @param message 提示消息
      */
     public static void showDefaultLong(String message) {
-        FancyToast.makeText(Utils.getApp(), message, Toast.LENGTH_LONG, FancyToast.DEFAULT, false).show();
+        FancyToast.makeText(message, Toast.LENGTH_LONG, FancyToast.DEFAULT, false).show();
     }
 
     /**
@@ -355,7 +355,7 @@ public class FancyToastUtils {
      * @param stringId 字符串资源ID
      */
     public static void showDefaultLong(@StringRes int stringId) {
-        FancyToast.makeText(Utils.getApp(), Utils.getString(stringId),
+        FancyToast.makeText(Utils.getString(stringId),
                 Toast.LENGTH_LONG, FancyToast.DEFAULT, false).show();
     }
 
@@ -367,6 +367,6 @@ public class FancyToastUtils {
      */
     public static void showDefaultLong(final @StringRes int stringId, final Object... args) {
         String string = Utils.getString(stringId, args);
-        FancyToast.makeText(Utils.getApp(), string, Toast.LENGTH_LONG, FancyToast.DEFAULT, false).show();
+        FancyToast.makeText(string, Toast.LENGTH_LONG, FancyToast.DEFAULT, false).show();
     }
 }

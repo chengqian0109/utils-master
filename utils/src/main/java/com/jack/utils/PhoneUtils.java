@@ -15,12 +15,11 @@ public class PhoneUtils {
     /**
      * 检查当前设置是否支持打电话功能
      *
-     * @param context 上下文
      * @return true支持，false不支持
      */
-    public static boolean isSupportCallPhone(Context context) {
+    public static boolean isSupportCallPhone() {
         try {
-            TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+            TelephonyManager telephonyManager = (TelephonyManager) Utils.getApp().getSystemService(Context.TELEPHONY_SERVICE);
             if (telephonyManager.getPhoneType() == TelephonyManager.PHONE_TYPE_NONE) {
                 return false;
             }
@@ -34,12 +33,15 @@ public class PhoneUtils {
     /**
      * 打开打电话的Activity
      *
-     * @param context 上下文
-     * @param phone   电话号码
+     * @param phone 电话号码
      */
-    public static void call(Context context, String phone) {
-        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phone));
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(intent);
+    public static void call(String phone) {
+        if (isSupportCallPhone()) {
+            Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phone));
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            Utils.getApp().startActivity(intent);
+        } else {
+            FancyToastUtils.showError(R.string.not_support_phone_device);
+        }
     }
 }

@@ -22,15 +22,14 @@ public class DeviceUtils {
     /**
      * 获取手机唯一设备串号IMEI
      *
-     * @param context 上下文
      * @return 唯一设备串号IMEI，获取不成功时返回空字符串
      */
     @SuppressLint("HardwareIds")
-    public static String getIMEI(Context context) {
+    public static String getIMEI() {
         String imei = "";
         try {
-            TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+            TelephonyManager telephonyManager = (TelephonyManager) Utils.getApp().getSystemService(Context.TELEPHONY_SERVICE);
+            if (ActivityCompat.checkSelfPermission(Utils.getApp(), Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
                 if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.O) {
                     imei = telephonyManager.getDeviceId();
                 } else {
@@ -46,15 +45,14 @@ public class DeviceUtils {
     /**
      * 获取手机IMSI号
      *
-     * @param context 上下文
      * @return 手机IMSI号，获取不成功时返回空字符串
      */
     @SuppressLint("HardwareIds")
-    public static String getIMSI(Context context) {
+    public static String getIMSI() {
         String imsi = "";
         try {
-            TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+            TelephonyManager telephonyManager = (TelephonyManager) Utils.getApp().getSystemService(Context.TELEPHONY_SERVICE);
+            if (ActivityCompat.checkSelfPermission(Utils.getApp(), Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
                 imsi = telephonyManager.getSubscriberId();
                 return imsi;
             }
@@ -68,18 +66,17 @@ public class DeviceUtils {
      * 获取电话号码
      * 注：并非一定可以获取到电话号码
      *
-     * @param context 上下文
      * @return 电话号码
      */
     @SuppressLint("HardwareIds")
-    public static String getPhoneNumber(Context context) {
+    public static String getPhoneNumber() {
         String phoneNumber = "";
         try {
-            TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED
-                    && ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_SMS) == PackageManager.PERMISSION_GRANTED) {
+            TelephonyManager telephonyManager = (TelephonyManager) Utils.getApp().getSystemService(Context.TELEPHONY_SERVICE);
+            if (ActivityCompat.checkSelfPermission(Utils.getApp(), Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED
+                    && ActivityCompat.checkSelfPermission(Utils.getApp(), Manifest.permission.READ_SMS) == PackageManager.PERMISSION_GRANTED) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_NUMBERS) == PackageManager.PERMISSION_GRANTED) {
+                    if (ActivityCompat.checkSelfPermission(Utils.getApp(), Manifest.permission.READ_PHONE_NUMBERS) == PackageManager.PERMISSION_GRANTED) {
                         phoneNumber = telephonyManager.getLine1Number();
                         return phoneNumber;
                     }
@@ -98,15 +95,14 @@ public class DeviceUtils {
     /**
      * 获取网络运营商编号
      *
-     * @param context 上下文
      * @return 网络运营商编号，如中国移动为46000或46002，中国联通为46001，中国电信为46003，
-     * 测试发现与{@link DeviceUtils#getSimOperator(Context)}返回结果一致
+     * 测试发现与{@link DeviceUtils#getSimOperator()}返回结果一致
      */
-    public static String getNetworkOperator(Context context) {
+    public static String getNetworkOperator() {
         String networkOperator = "";
         try {
-            TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+            TelephonyManager telephonyManager = (TelephonyManager) Utils.getApp().getSystemService(Context.TELEPHONY_SERVICE);
+            if (ActivityCompat.checkSelfPermission(Utils.getApp(), Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
                 networkOperator = telephonyManager.getNetworkOperator();
                 return networkOperator;
             }
@@ -119,14 +115,13 @@ public class DeviceUtils {
     /**
      * 获取网络运营商名称
      *
-     * @param context 上下文
      * @return 网络运营商名称
      */
-    public static String getNetworkOperatorName(Context context) {
+    public static String getNetworkOperatorName() {
         String networkOperatorName = "";
         try {
-            TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+            TelephonyManager telephonyManager = (TelephonyManager) Utils.getApp().getSystemService(Context.TELEPHONY_SERVICE);
+            if (ActivityCompat.checkSelfPermission(Utils.getApp(), Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
                 networkOperatorName = telephonyManager.getNetworkOperatorName();
                 return networkOperatorName;
             }
@@ -139,14 +134,13 @@ public class DeviceUtils {
     /**
      * 获SIM运营商编码
      *
-     * @param context 上下文
-     * @return SIM运营商编码，经测试与{@link DeviceUtils#getNetworkOperator(Context)}返回结果相同
+     * @return SIM运营商编码，经测试与{@link DeviceUtils#getNetworkOperator()}返回结果相同
      */
-    public static String getSimOperator(Context context) {
+    public static String getSimOperator() {
         String simOperator = "";
         try {
-            TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+            TelephonyManager telephonyManager = (TelephonyManager) Utils.getApp().getSystemService(Context.TELEPHONY_SERVICE);
+            if (ActivityCompat.checkSelfPermission(Utils.getApp(), Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
                 simOperator = telephonyManager.getSimOperator();
                 return simOperator;
             }
@@ -159,14 +153,13 @@ public class DeviceUtils {
     /**
      * 获取SIM运营商名称
      *
-     * @param context 上下文
      * @return SIM运营商名称，返回可能为空值
      */
-    public static String getSimOperatorName(Context context) {
+    public static String getSimOperatorName() {
         String simOperatorName = "";
         try {
-            TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+            TelephonyManager telephonyManager = (TelephonyManager) Utils.getApp().getSystemService(Context.TELEPHONY_SERVICE);
+            if (ActivityCompat.checkSelfPermission(Utils.getApp(), Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
                 simOperatorName = telephonyManager.getSimOperatorName();
                 return simOperatorName;
             }
@@ -179,15 +172,14 @@ public class DeviceUtils {
     /**
      * 获取SIM卡序列号
      *
-     * @param context 上下文
      * @return SIM卡序列号
      */
     @SuppressLint("HardwareIds")
-    public String getSimSerialNumber(Context context) {
+    public String getSimSerialNumber() {
         String simSerialNumber = "";
         try {
-            TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+            TelephonyManager telephonyManager = (TelephonyManager) Utils.getApp().getSystemService(Context.TELEPHONY_SERVICE);
+            if (ActivityCompat.checkSelfPermission(Utils.getApp(), Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
                 simSerialNumber = telephonyManager.getSimSerialNumber();
                 return simSerialNumber;
             }
@@ -200,14 +192,13 @@ public class DeviceUtils {
     /**
      * 获取SIM卡所属国家ISO编码
      *
-     * @param context 上下文
      * @return SIM卡说国家ISO编码，如中国返回为cn
      */
-    public static String getSimCountryIso(Context context) {
+    public static String getSimCountryIso() {
         String simCountryIso = "";
         try {
-            TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+            TelephonyManager telephonyManager = (TelephonyManager) Utils.getApp().getSystemService(Context.TELEPHONY_SERVICE);
+            if (ActivityCompat.checkSelfPermission(Utils.getApp(), Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
                 simCountryIso = telephonyManager.getSimCountryIso();
                 return simCountryIso;
             }

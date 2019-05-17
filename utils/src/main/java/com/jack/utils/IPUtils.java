@@ -41,12 +41,9 @@ public class IPUtils {
 
     /**
      * 获取本地网络地址或者移动网络的IPv4地址
-     *
-     * @param context 上下文
-     * @return
      */
-    public static String getIPAddress(Context context) {
-        ConnectivityManager connectivityManager = (ConnectivityManager) context
+    public static String getIPAddress() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) Utils.getApp()
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = connectivityManager.getActiveNetworkInfo();
         if (info.getType() == ConnectivityManager.TYPE_MOBILE) {
@@ -68,11 +65,10 @@ public class IPUtils {
 
         } else if (info.getType() == ConnectivityManager.TYPE_WIFI) {
             // 当前使用无线网络
-            WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+            WifiManager wifiManager = (WifiManager) Utils.getApp().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
             WifiInfo wifiInfo = wifiManager.getConnectionInfo();
             // 得到IPV4地址
-            String ipAddress = intIP2StringIP(wifiInfo.getIpAddress());
-            return ipAddress;
+            return intIP2StringIP(wifiInfo.getIpAddress());
         }
         return null;
     }
@@ -80,8 +76,7 @@ public class IPUtils {
     /**
      * 将得到的int类型的IP转换为String类型
      *
-     * @param ip
-     * @return
+     * @param ip IP
      */
     private static String intIP2StringIP(int ip) {
         return (ip & 0xFF) + "." +
@@ -92,8 +87,6 @@ public class IPUtils {
 
     /**
      * 获取本地外网IP地址
-     *
-     * @return
      */
     public static String getNetIp() {
         URL infoUrl = null;
@@ -174,7 +167,7 @@ public class IPUtils {
         b[1] = (int) ((ip >> 16) & 0xff);
         b[2] = (int) ((ip >> 8) & 0xff);
         b[3] = (int) (ip & 0xff);
-        x = Integer.toString(b[0]) + "." + Integer.toString(b[1]) + "." + Integer.toString(b[2]) + "." + Integer.toString(b[3]);
+        x = b[0] + "." + b[1] + "." + b[2] + "." + b[3];
         return x;
     }
 }

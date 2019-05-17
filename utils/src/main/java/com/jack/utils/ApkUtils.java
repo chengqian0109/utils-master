@@ -2,7 +2,6 @@ package com.jack.utils;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -22,16 +21,15 @@ public class ApkUtils {
     /**
      * 获取当前程序的版本名称
      *
-     * @param context 上下文
      * @return 版本名称
      */
-    public static String getVersionName(Context context) {
+    public static String getVersionName() {
         // 包的管理者 获取应用程序清单文件中所有信息
         // 初始化PackageManager
-        PackageManager pm = context.getPackageManager();
+        PackageManager pm = Utils.getApp().getPackageManager();
         // 根据应用程序的包名 获取应用程序的信息
         try {
-            PackageInfo packageInfo = pm.getPackageInfo(context.getPackageName(), 0);
+            PackageInfo packageInfo = pm.getPackageInfo(Utils.getApp().getPackageName(), 0);
             return packageInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
@@ -44,19 +42,17 @@ public class ApkUtils {
      *
      * @return 版本号
      */
-    public static long getVersionCode(Context context) {
+    public static long getVersionCode() {
         // 包的管理者 获取应用程序清单文件中所有信息
         // 初始化PackageManager
-        PackageManager pm = context.getPackageManager();
+        PackageManager pm = Utils.getApp().getPackageManager();
         // 根据应用程序的包名 获取应用程序的信息
         try {
-            PackageInfo packageInfo = pm.getPackageInfo(context.getPackageName(), 0);
-            return packageInfo.versionCode;
-            // 下面代码在compileSdkVersion = 28 时使用
-            /*if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.O_MR1) {
+            PackageInfo packageInfo = pm.getPackageInfo(Utils.getApp().getPackageName(), 0);
+            if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.O_MR1) {
                 return packageInfo.versionCode;
             }
-            return packageInfo.getLongVersionCode();*/
+            return packageInfo.getLongVersionCode();
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
             return -1;

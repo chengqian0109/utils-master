@@ -45,20 +45,19 @@ public class FancyToast extends Toast {
     /**
      * 创建吐司
      *
-     * @param context  上下文
      * @param message  消息内容
      * @param duration 持续时间
      * @param type     吐司类型 {@link Type}
      * @param useImg   是否显示图片
      */
-    public static Toast makeText(Context context, CharSequence message, int duration, @Type int type, boolean useImg) {
-        Toast toast = new Toast(context);
+    public static Toast makeText(CharSequence message, int duration, @Type int type, boolean useImg) {
+        Toast toast = new Toast(Utils.getApp());
         toast.setDuration(duration);
-        View layout = LayoutInflater.from(context).inflate(R.layout.layout_fancy_toast, null, false);
-        TextView l1 = (TextView) layout.findViewById(R.id.toast_text);
-        LinearLayout linearLayout = (LinearLayout) layout.findViewById(R.id.toast_type);
-        ImageView img = (ImageView) layout.findViewById(R.id.toast_icon);
-        ImageView img1 = (ImageView) layout.findViewById(R.id.imageView4);
+        View layout = LayoutInflater.from(Utils.getApp()).inflate(R.layout.layout_fancy_toast, null, false);
+        TextView l1 = layout.findViewById(R.id.toast_text);
+        LinearLayout linearLayout = layout.findViewById(R.id.toast_type);
+        ImageView img = layout.findViewById(R.id.toast_icon);
+        ImageView img1 = layout.findViewById(R.id.imageView4);
         l1.setText(message);
         img1.setVisibility(useImg ? View.VISIBLE : View.GONE);
         if (type == SUCCESS) {
@@ -87,19 +86,18 @@ public class FancyToast extends Toast {
     /**
      * 创建吐司
      *
-     * @param context    上下文
      * @param message    消息内容
      * @param duration   持续时间
      * @param type       吐司类型 {@link Type}
      * @param drawableId 右上角吐司图标
      */
-    public static Toast makeText(Context context, CharSequence message, int duration, @Type int type, int drawableId) {
-        Toast toast = new Toast(context);
+    public static Toast makeText(CharSequence message, int duration, @Type int type, int drawableId) {
+        Toast toast = new Toast(Utils.getApp());
         @SuppressLint("InflateParams")
-        View layout = LayoutInflater.from(context).inflate(R.layout.layout_fancy_toast, null, false);
-        TextView l1 = (TextView) layout.findViewById(R.id.toast_text);
-        LinearLayout linearLayout = (LinearLayout) layout.findViewById(R.id.toast_type);
-        ImageView img = (ImageView) layout.findViewById(R.id.toast_icon);
+        View layout = LayoutInflater.from(Utils.getApp()).inflate(R.layout.layout_fancy_toast, null, false);
+        TextView l1 = layout.findViewById(R.id.toast_text);
+        LinearLayout linearLayout = layout.findViewById(R.id.toast_type);
+        ImageView img = layout.findViewById(R.id.toast_icon);
         l1.setText(message);
         if (type == SUCCESS) {
             linearLayout.setBackgroundResource(R.drawable.success_shape);

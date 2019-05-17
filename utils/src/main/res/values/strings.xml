@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">utils</string>
+    <string name="not_support_phone_device">当前设备不支持拨打电话</string>
 </resources>

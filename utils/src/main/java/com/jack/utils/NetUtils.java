@@ -23,13 +23,13 @@ import java.util.regex.Pattern;
  * @author chengqian
  * Created on 2018/6/30
  */
-public class NetworkUtils {
+public class NetUtils {
     /**
      * IP正常验证程式
      */
     private static Pattern IP_PATTERN = Pattern.compile("((?:(?:25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}(?:25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d))))");
 
-    private NetworkUtils() {
+    private NetUtils() {
         /* cannot be instantiated */
         throw new UnsupportedOperationException("cannot be instantiated");
     }
@@ -37,15 +37,14 @@ public class NetworkUtils {
     /**
      * 判断网络是否连接
      *
-     * @param context 上下文
      * @return true已连接，false未连接
      */
-    public static boolean isConnected(Context context) {
-        ConnectivityManager connectivity = (ConnectivityManager) context
+    public static boolean isConnected() {
+        ConnectivityManager connectivity = (ConnectivityManager) Utils.getApp()
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         if (null != connectivity) {
             NetworkInfo info = connectivity.getActiveNetworkInfo();
-            if (null != info && info.isConnected()) {
+            if (null != info) {
                 return info.isConnected();
             }
         }
