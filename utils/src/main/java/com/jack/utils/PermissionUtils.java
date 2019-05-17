@@ -328,4 +328,19 @@ public class PermissionUtils {
          */
         void onGuideUserToSettings();
     }
+
+    public enum Result {
+        /**
+         * 已授权
+         */
+        GRANTED,
+        /**
+         * 权限被拒绝（勾选不再询问）
+         */
+        REFUSE,
+        /**
+         * 权限应该重新申请
+         */
+        RATIONALE
+    }
 }
