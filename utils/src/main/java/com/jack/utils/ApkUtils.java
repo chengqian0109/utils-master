@@ -97,4 +97,11 @@ public class ApkUtils {
     public static boolean isApkInstalled(String packageName) {
         return new File("/data/data/" + packageName).exists();
     }
+
+    /**
+     * 获取当前应用程序包名
+     */
+    public static String getPackageName() {
+        return Utils.getApp().getPackageName();
+    }
 }
