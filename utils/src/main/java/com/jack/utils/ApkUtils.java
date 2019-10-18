@@ -2,6 +2,8 @@ package com.jack.utils;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -10,6 +12,7 @@ import android.os.Build;
 import android.support.v4.content.FileProvider;
 
 import java.io.File;
+import java.util.List;
 
 /**
  * 获取版本名称、版本号、兼容Android 7.0及以上新版本直接安装的工具类
@@ -103,5 +106,28 @@ public class ApkUtils {
      */
     public static String getPackageName() {
         return Utils.getApp().getPackageName();
+    }
+
+    /**
+     * 判断Activity是否在前台运行
+     * @param activity Activity
+     * @return true表示在前台运行
+     */
+    public static boolean isRunningForeground(Activity activity) {
+        ActivityManager activityManager = (ActivityManager)
+                activity.getSystemService(Context.ACTIVITY_SERVICE);
+        String packageName = activity.getPackageName();
+        List<ActivityManager.RunningAppProcessInfo> appProcesses = activityManager
+                .getRunningAppProcesses();
+        if (appProcesses == null)
+            return false;
+        for (ActivityManager.RunningAppProcessInfo appProcess : appProcesses) {
+            if (appProcess.processName.equals(packageName)
+                    && appProcess.importance == ActivityManager
+                    .RunningAppProcessInfo.IMPORTANCE_FOREGROUND) {
+                return true;
+            }
+        }
+        return false;
     }
 }
