@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.jack.utils.FancyToastUtils;
 import com.jack.utils.PermissionUtils;
+import com.jack.utils.StatusBarUtils;
 import com.jack.utils.Utils;
 
 import java.util.List;
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Utils.init(getApplication());
+        StatusBarUtils.setStatusBarLightMode(this);
+        StatusBarUtils.setStatusBarColor(this, R.color.colorAccent,R.color.color_88000000);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)

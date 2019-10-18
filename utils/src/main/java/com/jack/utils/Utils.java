@@ -34,9 +34,7 @@ public class Utils {
      * 获取应用程序上下文
      */
     public static Application getApp() {
-        if (sApp == null) {
-            throw new IllegalArgumentException("You must invoke Utils#init(app) first!");
-        }
+        checkAppNotNull();
         return sApp;
     }
 
@@ -46,9 +44,7 @@ public class Utils {
      * @param strId 字符串ID
      */
     public static String getString(@StringRes int strId) {
-        if (sApp == null) {
-            throw new IllegalArgumentException("You must invoke Utils#init(app) first!");
-        }
+        checkAppNotNull();
         return getResources().getString(strId);
     }
 
@@ -59,9 +55,7 @@ public class Utils {
      * @param formatArgs 格式化参数
      */
     public static String getString(@StringRes int strId, Object... formatArgs) {
-        if (sApp == null) {
-            throw new IllegalArgumentException("You must invoke Utils#init(app) first!");
-        }
+        checkAppNotNull();
         return getResources().getString(strId, formatArgs);
     }
 
@@ -69,9 +63,7 @@ public class Utils {
      * 获取应用资源对象
      */
     public static Resources getResources() {
-        if (sApp == null) {
-            throw new IllegalArgumentException("You must invoke Utils#init(app) first!");
-        }
+        checkAppNotNull();
         return sApp.getResources();
     }
 
@@ -81,10 +73,17 @@ public class Utils {
      * @param colorId 颜色资源ID
      */
     public static int getColor(@ColorRes int colorId) {
+        checkAppNotNull();
+        return ContextCompat.getColor(sApp, colorId);
+    }
+
+    /**
+     * 检查Application是否已初始化
+     */
+    private static void checkAppNotNull() {
         if (sApp == null) {
             throw new IllegalArgumentException("You must invoke Utils#init(app) first!");
         }
-        return ContextCompat.getColor(sApp, colorId);
     }
 
     /**
@@ -93,9 +92,7 @@ public class Utils {
      * @param drawableId 图片资源ID
      */
     public static Drawable getDrawable(@ColorRes int drawableId) {
-        if (sApp == null) {
-            throw new IllegalArgumentException("You must invoke Utils#init(app) first!");
-        }
+        checkAppNotNull();
         return ContextCompat.getDrawable(sApp, drawableId);
     }
 
@@ -103,9 +100,7 @@ public class Utils {
      * 获取屏幕宽度
      */
     public static int getScreenWidth() {
-        if (sApp == null) {
-            throw new IllegalArgumentException("You must invoke Utils#init(app) first!");
-        }
+        checkAppNotNull();
         return getDisplayMetrics().widthPixels;
     }
 
@@ -113,9 +108,7 @@ public class Utils {
      * 获取屏幕宽度
      */
     public static int getScreenHeight() {
-        if (sApp == null) {
-            throw new IllegalArgumentException("You must invoke Utils#init(app) first!");
-        }
+        checkAppNotNull();
         return getDisplayMetrics().heightPixels;
     }
 
@@ -123,9 +116,7 @@ public class Utils {
      * 获取屏幕宽高矩阵
      */
     public static DisplayMetrics getDisplayMetrics() {
-        if (sApp == null) {
-            throw new IllegalArgumentException("You must invoke Utils#init(app) first!");
-        }
+        checkAppNotNull();
         return getResources().getDisplayMetrics();
     }
 }
