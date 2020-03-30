@@ -1,10 +1,8 @@
 package com.jack.demo;
 
-import android.support.annotation.IdRes;
+import androidx.annotation.IdRes;
 import android.view.View;
 import android.view.View.OnClickListener;
-
-import com.jack.utils.LogUtils;
 
 /**
  * 避免在1秒内触发多次点击

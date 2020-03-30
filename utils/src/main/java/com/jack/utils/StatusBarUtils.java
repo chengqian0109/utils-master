@@ -6,13 +6,15 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
-import android.support.annotation.ColorInt;
-import android.support.annotation.ColorRes;
-import android.support.annotation.IntDef;
-import android.support.v4.view.ViewCompat;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.ColorRes;
+import androidx.annotation.IntDef;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.ViewCompat;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -195,7 +197,9 @@ public class StatusBarUtils {
      * @param activity 需要被处理的 Activity
      */
     public static boolean setStatusBarLightMode(Activity activity) {
-        if (activity == null) return false;
+        if (activity == null) {
+            return false;
+        }
         // 无语系列：ZTK C2016只能时间和电池图标变色。。。。
         if (DeviceUtils.isZTKC2016()) {
             return false;
@@ -244,7 +248,9 @@ public class StatusBarUtils {
      * 支持 4.4 以上版本 MIUI 和 Flyme，以及 6.0 以上版本的其他 Android
      */
     public static boolean setStatusBarDarkMode(Activity activity) {
-        if (activity == null) return false;
+        if (activity == null) {
+            return false;
+        }
         if (mStatusBarType == STATUS_BAR_TYPE_DEFAULT) {
             // 默认状态，不需要处理
             return true;
@@ -518,7 +524,7 @@ public class StatusBarUtils {
             Window window = activity.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             // 设置状态栏的颜色
-            window.setStatusBarColor(activity.getResources().getColor(colorId));
+            window.setStatusBarColor(ContextCompat.getColor(activity, colorId));
 //            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
     }
